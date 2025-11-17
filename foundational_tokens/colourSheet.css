@@ -2,11 +2,11 @@
     color:#003865;
 }
 
-.rust { 
+.rust { /* A secondary colour should compliment the primary colour of a brand and be used as an accent or background colour. */
     color:#9A3A06;
 }
 
-.uniBlue80 { 
+.uniBlue80 { /* Tint colours are lighter shades of the primary and secondary colours. They should be used sparingly to create depth and variation. */
     color:#435F81;
 }
 
@@ -42,7 +42,7 @@
     color:#E8D9CE;
 }
 
-.dgrey1 { 
+.dgrey1 { /* Vanilla colours are neutral, foundational elements you can build on for versatile user experiences across platforms. */
     color:#666666;
 }
 
@@ -78,7 +78,8 @@
     color:#757575;
 }
 
-.error { 
+.error { /* UI colours should be used for alerts based on user actions such as filling a field or submitting a form. 
+    These are not brand colours, they are for communication only. */
     color:#D4351C;
 }
 
