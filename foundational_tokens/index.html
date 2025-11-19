@@ -4,7 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="main.css">
-
+        <style>
+            .inline {
+                display: inline-block;
+                border-color: pink;
+                border-style: groove;
+            }
+        </style>
         <title>Font Example</title>
     </head>
     <body>
@@ -19,7 +25,20 @@
 
 
         <br>
-        <p class="secondary">This is Secondary Font</p>
-        <p class="secondary bold">This is Secondary Bold</p>
+        <p class="secondary inline" style="padding: var(--space1);">This is Secondary Font Padding 1</p>
+        <p class="secondary inline" style="margin: var(--space1);">This is Secondary Font Margin 1</p>
+        <p class="secondary inline" style="padding: var(--space6);">This is Secondary Font Padding 6</p>
+        <p class="secondary inline" style="margin: var(--space6);">This is Secondary Font Margin 6</p>
+        <p class="secondary inline" style="padding: var(--space12);">This is Secondary Font Padding 12</p>
+        <p class="secondary inline" style="margin: var(--space12);">This is Secondary Font Margin 12</p>
+        <br>
+
+        <p class="secondary" style="line-height: var(--space1);border-color: pink;border-style: groove;">This is Secondary Font Line Height 1</p>
+        <p class="secondary" style="line-height: var(--space4);border-color: pink;border-style: groove;">This is Secondary Font Line Height 4</p>
+
+        <p class="secondary" style="line-height: var(--space9);border-color: pink;border-style: groove;">This is Secondary Font Line Height 9</p>
+        <p class="secondary" style="line-height: var(--space12);border-color: pink;border-style: groove;">This is Secondary Font Line Height 12</p>
+
+
 
 </html>
