@@ -1,0 +1,85 @@
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $grid-margin;
+    padding-right: $grid-margin;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -($grid-margin/2);
+    margin-right: -($grid-margin/2);
+}
+
+.col {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0%;
+    padding-left: ($grid-gutter/2);
+    padding-right: ($grid-gutter/2);
+}
+
+/* Generate the column spans 1-12 */
+@for $i from 1 through $grid-columns {
+    .col-#{$i} {
+        width: percentage($i / $grid-columns);
+    }
+}
+
+/* Generate responsive column classes */
+@each $bp, $break in $breakpoints {
+    @for $i from 1 through $grid-columns {
+        @media (min-width: $break) {
+            .col-#{$bp}-#{$i} {
+                width: percentage($i / $grid-columns);
+            }
+        }
+    }
+}
+
+/* Auto width columns */
+.col-auto {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: auto;
+}
+
+/* Offset classes for spacing */
+@for $i from 1 through $grid-columns {
+    .offset-#{$i} {
+        margin-left: percentage($i / $grid-columns);
+    }
+
+    @each $bp, $break in $breakpoints {
+        @media (min-width: $break) {
+            .offset-#{$bp}-#{$i} {
+                margin-left: percentage($i / $grid-columns);
+            }
+        }
+    }
+}
+
+/* Order classes */
+@for $i from 1 through $grid-columns {
+    .order-#{$i} {
+        order: $i;
+    }
+
+    @each $bp, $break in $breakpoints {
+        @media (min-width: $break) {
+            .order-#{$bp}-#{$i} {
+                order: $i;
+            }
+        }
+    }
+}
+
+/* Utility to clear classes */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
