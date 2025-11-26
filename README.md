@@ -8,6 +8,15 @@ To make it easy for you to get started with GitLab, here's a list of recommended
 
 Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
+
+## Setting up tests
+
+Here is the general step by step process to run the tests yourself
+
+    1. In the project root folder (where .gitnore is), open cmd in this folder
+    2. Type and run - npm install
+    3. Type and run - npx playwright install
+    4. Now you should be able to run the tests by using - npm test
 ## Add your files
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
