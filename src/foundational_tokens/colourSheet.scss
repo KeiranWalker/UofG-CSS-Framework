@@ -28,3 +28,47 @@ $mgrey3: #757575;
 $error: #D4351C; // UI colours should be used for alerts based on user actions such as filling a field or submitting a form. These are not brand colours, they are for communication only.
 $success: #8BC34A;
 $highlight: #FFDD00;
+
+/* CSS Variables for testing */
+
+:root {
+
+    /* Primary */
+
+    --uni-blue: #{$uni-blue};
+    --rust: #{$rust};
+
+    /* Tints */
+
+    --uni-blue80: #{$uni-blue80};
+    --uni-blue60: #{$uni-blue60};
+    --uni-blue40: #{$uni-blue40};
+    --uni-blue20: #{$uni-blue20};
+    --uni-blue10: #{$uni-blue10};
+    
+    --rust80: #{$rust80};
+    --rust60: #{$rust60};
+    --rust40: #{$rust40};
+    --rust20: #{$rust20};
+
+    /* Neutrals */
+    
+    --dgrey1: #{$dgrey1};
+    --dgrey2: #{$dgrey2};
+    --dgrey3: #{$dgrey3};
+
+    --lgrey1: #{$lgrey1};
+    --lgrey2: #{$lgrey2};
+    --lgrey3: #{$lgrey3};
+
+    --mgrey1: #{$mgrey1};
+    --mgrey2: #{$mgrey2};
+    --mgrey3: #{$mgrey3};
+
+    /* UI Colours */
+
+    --error: #{$error};
+    --success: #{$success};
+    --highlight: #{$highlight};
+
+}
