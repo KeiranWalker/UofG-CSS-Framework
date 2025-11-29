@@ -4,7 +4,7 @@ test.describe("CSS Reset Tests", () => {
 
   test.beforeEach(async ({ page }) => {
     // Load the test page using absolute file path
-      const fileUrl = new URL("./test-page.html", import.meta.url);
+      const fileUrl = new URL("./reset.html", import.meta.url);
       await page.goto(fileUrl.toString());
   });
 

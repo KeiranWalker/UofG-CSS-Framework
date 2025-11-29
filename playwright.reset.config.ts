@@ -1,10 +1,10 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './tests',
+    testDir: './tests/reset_test',
   
 
-    globalSetup: "./playwright.setup.js",
+    globalSetup: "./playwright.setup.reset.mjs",
   
     use: { headless: true },
 

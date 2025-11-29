@@ -1,3 +1,6 @@
+@use './spaceSheet.scss' as *;
+@use "sass:map";
+
 $breakpoints: (
     extra-small: 0,
     small: 768px,
@@ -9,3 +12,42 @@ $breakpoints: (
 $grid-columns: 12;
 $grid-gutter: $space6;
 $grid-margin: $space6;
+
+/* CSS Varables for testing */
+
+:root {
+
+    --bp-xs: #{map.get($breakpoints, extra-small)};
+    --bp-sm: #{map.get($breakpoints, small)};
+    --bp-md: #{map.get($breakpoints, medium)};
+    --bp-lg: #{map.get($breakpoints, large)};
+    --bp-xl: #{map.get($breakpoints, extra-large)};
+
+    /* Grid system */
+
+    --grid-columns: #{$grid-columns};
+    --grid-gutter: #{$grid-gutter};
+    --grid-margin: #{$grid-margin};
+
+}
+
+/* Media query helpers
+   This makes breakpoint testable */
+
+@media (min-width: #{map.get($breakpoints, small)}) {
+    .bp-test {
+        color: red;
+    }
+}
+
+@media (min-width: #{map.get($breakpoints, medium)}) {
+    .bp-test-md {
+        color: blue;
+    }
+}
+
+@media (min-width: #{map.get($breakpoints, large)}) {
+    .bp-test-lg {
+        color: green;
+    }
+}

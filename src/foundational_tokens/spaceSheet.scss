@@ -11,3 +11,22 @@ $space9: 3rem;
 $space10: 3.5rem;
 $space11: 4rem;
 $space12: 6rem;
+
+/* CSS Variables for testing */
+
+:root {
+
+    --space1: #{$space1};
+    --space2: #{$space2};
+    --space3: #{$space3};
+    --space4: #{$space4};
+    --space5: #{$space5};
+    --space6: #{$space6};
+    --space7: #{$space7};
+    --space8: #{$space8};
+    --space9: #{$space9};
+    --space10: #{$space10};
+    --space11: #{$space11};
+    --space12: #{$space12};
+
+}
