@@ -1,0 +1,95 @@
+body {
+    font-family: "Swiss721 BT", sans-serif; /* UofG primary */
+    line-height: 1.5;
+    font-size: 1rem;
+    color: $dgrey3; /* UofG neutral dark */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Garamond", serif; /* Secondary UofG font */
+    font-weight: 600;
+    margin-bottom: $space4;
+    color: $uniBlue;
+}
+
+h1 {
+    @extend .primary.plus-nine;
+}
+
+h2 {
+    @extend .primary.plus-six;
+}
+
+h3 {
+    @extend .primary.plus-four;
+}
+
+h4 {
+    @extend .primary.plus-two;
+}
+
+h5 {
+    @extend .primary.plus-one;
+}
+
+h6 {
+    @extend .primary.base;
+}
+
+p {
+    @extend .primary.base;
+    margin-bottom: $space4;
+    color: $dgrey3;
+}
+
+/* Links use uni-blue for now */
+
+a {
+    color: $uni-blue; 
+    font-weight: 500;
+    text-underline-offset: 0.25rem;
+
+    &:hover {
+        text-decoration: underline;
+        color: $uniBlue80;
+    }
+}
+
+/* Add back bullet points */
+
+ul {
+    list-style: disc;
+    margin-left: $space6;
+    margin-bottom: $space4;
+}
+
+ol {
+    list-style: decimal;
+    margin-left: $space6;
+    margin-bottom: $space4;
+}
+
+ul ul, ol ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-family: "Garamond", serif;
+    font-style: italic;
+    padding-left: $space5;
+    border-left: 0.25rem solid $uni-blue40;
+    margin-bottom: $space4;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+small {
+    @extend .primary.minusOne;
+    color: $dgrey1;
+}
