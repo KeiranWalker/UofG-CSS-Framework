@@ -8,6 +8,7 @@ Describe in detail the prupose of the merge request, and how this is accomplishe
 - [ ] Feature Implemented
 - [ ] Bug Fixed
 - [ ] Documentation updated
+- [ ] Refactoring
 
 ## Review Checklist
 - [ ] Ensure no more than roughly 300 lines of code
