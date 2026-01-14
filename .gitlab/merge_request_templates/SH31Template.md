@@ -11,7 +11,7 @@ Describe in detail the prupose of the merge request, and how this is accomplishe
 
 ## Review Checklist
 - [ ] Ensure no more than roughly 300 lines of code
+- [ ] Branch named accurately
 - [ ] Code adheres to style guide
-- [ ] Does it work on the prototype accross selected platforms (if applicable)
 - [ ] Adheres to accessibility guidelines
 - [ ] Passed code review by peer
