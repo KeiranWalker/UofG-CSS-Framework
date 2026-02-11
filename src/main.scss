@@ -10,19 +10,20 @@
 @use './foundational_tokens/text-sheet';    
 
 /* Raw fonts css file import */
+
 @use './layout/grid';
 @use './utilities/accessibility';
 @use './utilities/alignments';
-@use './utilities/border-utilities';
-@use './utilities/colour-utilities';
-@use './utilities/flexbox-utilities';
+@use './utilities/border';
+@use './utilities/colour';
+@use './utilities/flexbox';
 @use './utilities/interaction';
-@use './utilities/layout-utilities';
-@use './utilities/shadow-utilities';
-@use './utilities/sizing-utilities';
-@use './utilities/spacing-utilities';
-@use './utilities/typography-utilities';
-@use './utilities/visibility-utilities';
+@use './utilities/layout';
+@use './utilities/shadow';
+@use './utilities/sizing';
+@use './utilities/spacing';
+@use './utilities/typography';
+@use './utilities/visibility';
 
 /* Components */
 
@@ -33,3 +34,4 @@
 @use './components/tiles';
 @use './components/download-links';
 @use './components/blockquotes';
+@use './components/text-input';
