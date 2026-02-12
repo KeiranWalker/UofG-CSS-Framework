@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reset – Visual Test</title>
+
+    
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers */
+        .page {
+            padding: 24px;
+            display: grid;
+            gap: 18px;
+            font-family: system-ui, sans-serif;
+            /* for test labels */
+        }
+
+        .section {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .titleRow {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+
+        .titleRow h2 {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .expect {
+            font-size: 12px;
+            color: #555;
+            margin: 0;
+            max-width: 70ch;
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .chip {
+            font-size: 12px;
+            background: #f3f3f3;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            padding: 2px 8px;
+        }
+
+        /* Visual probes */
+        .probeBox {
+            width: 220px;
+            padding: 20px;
+            border: 6px solid #333;
+            background: #eee;
+        }
+
+        .probeBoxInner {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #666;
+            background: #fff;
+        }
+
+        .mediaWrap {
+            max-width: 360px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .mediaWrap img {
+            background: #ddd;
+        }
+
+        .fakeLink {
+            color: #0b5fff;
+            text-decoration: underline;
+        }
+
+        .formRow {
+            display: grid;
+            gap: 10px;
+            max-width: 520px;
+        }
+
+        .formRow input,
+        .formRow select,
+        .formRow textarea,
+        .formRow button {
+            border: 1px solid #999;
+            /* To see base reset clearly */
+            padding: 10px;
+            /* To prove reset removed default padding */
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .formRow button {
+            background: #f5f5f5;
+        }
+
+        .focusGrid {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .motionDemo {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: #0b5fff;
+            animation: wiggle 900ms ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(24px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .note {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header class="section">
+            <div class="titleRow">
+                <h1 style="margin:0; font-size:20px;">Reset – Visual Test Page</h1>
+                <span class="chip">Keyboard: Tab</span>
+            </div>
+            <p class="expect">
+                This page verifies your reset/normalise rules. Each section describes the expected visual result.
+                If something looks “browser-default”, your reset might not be loaded (check the CSS path).
+            </p>
+        </header>
+
+        <!-- 1) Box sizing -->
+        <section class="section" id="box-model">
+            <div class="titleRow">
+                <h2>Box model: <code>box-sizing: border-box</code></h2>
+                <span class="chip">*, *::before, *::after</span>
+            </div>
+            <p class="expect">
+                Expected: the outer box should not overflow its declared width because padding + border are included in
+                width.
+            </p>
+
+            <div class="grid2">
+                <div>
+                    <div class="probeBox">
+                        Outer box (220px wide)
+                        <div class="probeBoxInner">Inner content</div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="note">
+                        If box-sizing isn’t applied, padding/borders often cause unexpected overflow.
+                        Here, the box should stay tidy and predictable.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2) Margin reset -->
+        <section class="section" id="margins">
+            <div class="titleRow">
+                <h2>Margin reset on headings/paragraphs/etc.</h2>
+                <span class="chip">body, h1… blockquote… dl/dd</span>
+            </div>
+            <p class="expect">
+                Expected: no “mystery gaps” between these elements. They should sit flush unless your test-page styles
+                add spacing.
+            </p>
+
+            <!-- these elements would normally have browser margins -->
+            <h1>Heading 1</h1>
+            <p>Paragraph text immediately after heading (should have no default top margin).</p>
+            <h2>Heading 2</h2>
+            <p>Another paragraph. Still no default margins.</p>
+
+            <blockquote>Blockquote element. No default indentation/margins should appear.</blockquote>
+
+            <dl>
+                <dt>Definition term</dt>
+                <dd>Definition description (should not have default indentation/margins).</dd>
+            </dl>
+        </section>
+
+        <!-- 3) Lists -->
+        <section class="section" id="lists">
+            <div class="titleRow">
+                <h2>List reset: <code>ul/ol</code> no bullets + no padding</h2>
+                <span class="chip">list-style: none</span>
+            </div>
+            <p class="expect">
+                Expected: no bullets/numbers and no left padding. List items align with surrounding text.
+            </p>
+
+            <div class="grid2">
+                <div>
+                    <ul>
+                        <li>UL item one</li>
+                        <li>UL item two</li>
+                    </ul>
+                </div>
+                <div>
+                    <ol>
+                        <li>OL item one</li>
+                        <li>OL item two</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) Media -->
+        <section class="section" id="media">
+            <div class="titleRow">
+                <h2>Media: <code>max-width:100%</code>, <code>display:block</code>, <code>height:auto</code></h2>
+                <span class="chip">img/picture/video/svg</span>
+            </div>
+            <p class="expect">
+                Expected: media should not overflow its container, should behave like block elements, and preserve
+                aspect ratio.
+            </p>
+
+            <div class="mediaWrap">
+                <p class="note">Container width is constrained. The image should scale down, not overflow.</p>
+                <img alt="Placeholder"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='500'%3E%3Crect width='1200' height='500' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='48'%3E1200x500%3C/text%3E%3C/svg%3E" />
+            </div>
+        </section>
+
+        <!-- 5) Anchor -->
+        <section class="section" id="anchors">
+            <div class="titleRow">
+                <h2>Anchors: no underline, inherit color</h2>
+                <span class="chip">a { text-decoration:none; color:inherit; }</span>
+            </div>
+            <p class="expect">
+                Expected: link looks like surrounding text (no underline and no default blue/purple). This is deliberate
+                per your reset.
+            </p>
+
+            <p>
+                This is normal text with a
+                <a href="#anchors">link that should look like normal text</a>.
+            </p>
+
+            <p class="note">
+                For comparison only (test helper): <span class="fakeLink">this is how a “traditional link” might
+                    look</span>.
+            </p>
+        </section>
+
+        <!-- 6) Forms -->
+        <section class="section" id="forms">
+            <div class="titleRow">
+                <h2>Forms: consistent fonts, no default appearance</h2>
+                <span class="chip">button/input/select/textarea reset</span>
+            </div>
+            <p class="expect">
+                Expected: form controls inherit font, have no browser default padding/borders/appearance.
+                (This page adds its own border/padding so you can see a consistent baseline.)
+            </p>
+
+            <div class="formRow">
+                <label>
+                    Input
+                    <input type="text" placeholder="Type here…" />
+                </label>
+
+                <label>
+                    Select
+                    <select>
+                        <option>Option one</option>
+                        <option>Option two</option>
+                    </select>
+                </label>
+
+                <label>
+                    Textarea (should only resize vertically)
+                    <textarea rows="3">Try resizing me. Horizontal resize should be prevented.</textarea>
+                </label>
+
+                <button type="button">Button (should show pointer cursor)</button>
+
+                <p class="note">
+                    If you see iOS “rounded” inputs, inner shadows, or inconsistent fonts, appearance reset may not be
+                    taking effect.
+                </p>
+            </div>
+        </section>
+
+        <!-- 7) Focus visible -->
+        <section class="section" id="focus">
+            <div class="titleRow">
+                <h2>Focus: <code>:focus-visible</code> outline + offset</h2>
+                <span class="chip">Accessibility</span>
+            </div>
+            <p class="expect">
+                Expected: when using keyboard (Tab), focused items show a 4px outline with 4px offset using
+                <code>--uofg-focus</code> (default #FFDD00).
+            </p>
+
+            <div class="focusGrid">
+                <button type="button">Tab to me</button>
+                <a class="btn" href="#focus">Tab to this link</a>
+                <input type="text" placeholder="Tab to this input"
+                    style="border:1px solid #999; padding:10px; border-radius:10px;" />
+            </div>
+
+            <p class="note">
+                Mouse click may not show focus-visible depending on browser (that’s intended). Use Tab.
+            </p>
+        </section>
+
+        <!-- 8) Reduced motion -->
+        <section class="section" id="motion">
+            <div class="titleRow">
+                <h2>Reduced motion: animations/transitions reduced to 0s</h2>
+                <span class="chip">@media (prefers-reduced-motion: reduce)</span>
+            </div>
+            <p class="expect">
+                Expected: with OS “Reduce motion” enabled, the blue square should stop animating (duration becomes 0s).
+            </p>
+
+            <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+                <div class="motionDemo" aria-label="motion demo"></div>
+                <p class="note">
+                    Toggle this in your OS accessibility settings to verify.
+                    (In normal mode it will animate.)
+                </p>
+            </div>
+        </section>
+
+        <!-- 9) CSS variable fallback check -->
+        <section class="section" id="vars">
+            <div class="titleRow">
+                <h2>CSS variable fallbacks</h2>
+                <span class="chip">var(--uofg-*, fallback)</span>
+            </div>
+            <p class="expect">
+                Expected: body uses <code>--uofg-font-sans</code>, <code>--uofg-text</code>, <code>--uofg-bg</code>.
+                If variables are missing, fallbacks apply (sans-serif / #000 / #fff).
+            </p>
+
+            <p class="note">
+                If your tokens page defines these variables, load that first in real usage. This reset page ensures sane
+                defaults.
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>
