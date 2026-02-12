@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tokens – Visual Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* ---- Test-page styling only ---- */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            line-height: 1.5;
+            background: #fff;
+            color: #111;
+        }
+
+        header {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 85ch;
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .section {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            font-size: 12px;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            padding: 2px 8px;
+            background: #f6f6f6;
+            color: #333;
+        }
+
+        .mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Spacing demo */
+        .spaceList {
+            display: grid;
+            gap: 10px;
+        }
+
+        .spaceItem {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .barWrap {
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+            padding: 10px;
+            background: #fafafa;
+        }
+
+        .bar {
+            height: 18px;
+            border-radius: 8px;
+            background: #0b5fff;
+            width: 0;
+        }
+
+        /* Breakpoint demo */
+        .bpGrid {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .bpCard {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 12px;
+            background: #fafafa;
+            display: grid;
+            gap: 8px;
+        }
+
+        .bpProbe {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            background: #fff;
+            color: #111;
+        }
+
+        /* Colour swatches */
+        .swatchGrid {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        }
+
+        .swatch {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .swatchTop {
+            height: 52px;
+            display: block;
+        }
+
+        .swatchBody {
+            padding: 10px 12px;
+            display: grid;
+            gap: 4px;
+        }
+
+        .swatchName {
+            font-weight: 650;
+            font-size: 13px;
+        }
+
+        .swatchVar {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .swatchHex {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .contrastNote {
+            font-size: 12px;
+            color: #666;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid #eee;
+            padding: 8px 6px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            color: #555;
+            font-weight: 650;
+        }
+    </style>
+
+    <style>
+        /* ===== TOKENS  ===== */
+
+        :root {
+            --space1: 0.25rem;
+            --space2: 0.5rem;
+            --space3: 0.75rem;
+            --space4: 1rem;
+            --space5: 1.25rem;
+            --space6: 1.5rem;
+            --space7: 2em;
+            --space8: 2.5rem;
+            --space9: 3rem;
+            --space10: 3.5rem;
+            --space11: 4rem;
+            --space12: 6rem;
+        }
+
+        :root {
+            --bp-xs: 0;
+            --bp-sm: 768px;
+            --bp-md: 1024px;
+            --bp-lg: 1400px;
+            --bp-xl: 1900px;
+            --grid-columns: 12;
+            --grid-gutter: 1.5rem;
+            --grid-margin: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .bp-test {
+                color: red;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .bp-test-md {
+                color: blue;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .bp-test-lg {
+                color: green;
+            }
+        }
+
+        :root {
+            --uni-blue: #003865;
+            --rust: #9A3A06;
+
+            --uni-blue80: #435F81;
+            --uni-blue60: #6D87A0;
+            --uni-blue40: #9DAEBF;
+            --uni-blue20: #CED7DF;
+            --uni-blue10: #E6EBF0;
+
+            --rust80: #A56648;
+            --rust60: #BA8B6F;
+            --rust40: #D1B29E;
+            --rust20: #E8D9CE;
+
+            --dgrey1: #666666;
+            --dgrey2: #4D4D4D;
+            --dgrey3: #323232;
+
+            --lgrey1: #F5F5F5;
+            --lgrey2: #E6E6E6;
+            --lgrey3: #CCCCCC;
+
+            --mgrey1: #B3B3B3;
+            --mgrey2: #999999;
+            --mgrey3: #757575;
+
+            --error: #D4351C;
+            --success: #8BC34A;
+            --highlight: #FFDD00;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tokens – Visual Test</h1>
+        <p>
+            This page verifies token availability and shows responsive breakpoint probes.
+            Resize the preview viewport (e.g. 360 / 768 / 1024 / 1400) to confirm breakpoint behaviour.
+        </p>
+        <div class="row">
+            <span class="pill mono" id="vw">viewport: …</span>
+            <span class="pill mono" id="bp">breakpoint: …</span>
+            <span class="pill mono">grid: <span id="gridInfo">…</span></span>
+        </div>
+    </header>
+
+    <main class="grid">
+        <!-- SPACING -->
+        <section class="section" id="spacing">
+            <div class="row">
+                <h2>Spacing tokens</h2>
+                <span class="pill mono">--space1 → --space12</span>
+            </div>
+            <p>
+                Expected: bars show the scale increasing. Values are read from <code>:root</code> using
+                <code>getComputedStyle</code>.
+            </p>
+
+            <div class="spaceList" id="spaceList"></div>
+        </section>
+
+        <!-- BREAKPOINTS + GRID -->
+        <section class="section" id="breakpoints">
+            <div class="row">
+                <h2>Breakpoints & grid tokens</h2>
+                <span class="pill mono">--bp-sm 768px, --bp-md 1024px, --bp-lg 1400px</span>
+            </div>
+            <p>
+                Expected: the “probe” text changes colour when the viewport passes 768px / 1024px / 1400px (per your
+                media queries).
+            </p>
+
+            <div class="bpGrid">
+                <div class="bpCard">
+                    <strong>Breakpoint values</strong>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Computed value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bpTable"></tbody>
+                    </table>
+                </div>
+
+                <div class="bpCard">
+                    <strong>Breakpoint probes</strong>
+                    <div class="bpProbe">
+                        <div class="mono">.bp-test</div>
+                        <div class="bp-test">Should become <strong>red</strong> at ≥ 768px</div>
+                    </div>
+
+                    <div class="bpProbe">
+                        <div class="mono">.bp-test-md</div>
+                        <div class="bp-test-md">Should become <strong>blue</strong> at ≥ 1024px</div>
+                    </div>
+
+                    <div class="bpProbe">
+                        <div class="mono">.bp-test-lg</div>
+                        <div class="bp-test-lg">Should become <strong>green</strong> at ≥ 1400px</div>
+                    </div>
+                </div>
+
+                <div class="bpCard">
+                    <strong>Grid tokens</strong>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Computed value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gridTable"></tbody>
+                    </table>
+                    <p class="contrastNote">
+                        These are configuration tokens (columns/gutter/margin). The goal is to confirm presence +
+                        expected values.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLOURS -->
+        <section class="section" id="colours">
+            <div class="row">
+                <h2>Colour tokens</h2>
+                <span class="pill mono">Primary / Tints / Neutrals / UI</span>
+            </div>
+            <p>
+                Expected: each swatch is filled via <code>background: var(--token)</code> and shows computed RGB/hex
+                info.
+            </p>
+
+            <div class="swatchGrid" id="swatches"></div>
+        </section>
+    </main>
+
+    <script>
+        const rootStyle = getComputedStyle(document.documentElement);
+
+        function getVar(name) {
+            return rootStyle.getPropertyValue(name).trim();
+        }
+
+        function setHeaderInfo() {
+            const w = window.innerWidth;
+            document.getElementById("vw").textContent = `viewport: ${w}px`;
+
+            const bpSm = parsePx(getVar("--bp-sm"));
+            const bpMd = parsePx(getVar("--bp-md"));
+            const bpLg = parsePx(getVar("--bp-lg"));
+            const bpXl = parsePx(getVar("--bp-xl"));
+
+            let label = "xs";
+            if (w >= bpXl) label = "xl";
+            else if (w >= bpLg) label = "lg";
+            else if (w >= bpMd) label = "md";
+            else if (w >= bpSm) label = "sm";
+
+            document.getElementById("bp").textContent = `breakpoint: ${label}`;
+
+            const cols = getVar("--grid-columns") || "(missing)";
+            const gutter = getVar("--grid-gutter") || "(missing)";
+            const margin = getVar("--grid-margin") || "(missing)";
+            document.getElementById("gridInfo").textContent = `${cols} cols, gutter ${gutter}, margin ${margin}`;
+        }
+
+        function parsePx(v) {
+            const m = String(v).match(/([\d.]+)px/);
+            return m ? Number(m[1]) : 0;
+        }
+
+        /* SPACING render */
+        function renderSpacing() {
+            const list = document.getElementById("spaceList");
+            list.innerHTML = "";
+            for (let i = 1; i <= 12; i++) {
+                const name = `--space${i}`;
+                const val = getVar(name) || "(missing)";
+
+                const item = document.createElement("div");
+                item.className = "spaceItem";
+                item.innerHTML = `
+          <div class="mono">${name}<br><span style="color:#666">${val}</span></div>
+          <div class="barWrap">
+            <div class="bar" style="width: var(${name});"></div>
+          </div>
+        `;
+                list.appendChild(item);
+            }
+        }
+
+        /* Breakpoints table */
+        function renderBreakpoints() {
+            const rows = [
+                ["--bp-xs", getVar("--bp-xs")],
+                ["--bp-sm", getVar("--bp-sm")],
+                ["--bp-md", getVar("--bp-md")],
+                ["--bp-lg", getVar("--bp-lg")],
+                ["--bp-xl", getVar("--bp-xl")]
+            ];
+
+            const tbody = document.getElementById("bpTable");
+            tbody.innerHTML = rows.map(([k, v]) => (
+                `<tr><td class="mono">${k}</td><td class="mono">${v || "(missing)"}</td></tr>`
+            )).join("");
+        }
+
+        /* Grid table */
+        function renderGridTokens() {
+            const rows = [
+                ["--grid-columns", getVar("--grid-columns")],
+                ["--grid-gutter", getVar("--grid-gutter")],
+                ["--grid-margin", getVar("--grid-margin")]
+            ];
+
+            const tbody = document.getElementById("gridTable");
+            tbody.innerHTML = rows.map(([k, v]) => (
+                `<tr><td class="mono">${k}</td><td class="mono">${v || "(missing)"}</td></tr>`
+            )).join("");
+        }
+
+        /* Colour swatches */
+        const colourGroups = [
+            {
+                title: "Primary",
+                tokens: ["--uni-blue", "--rust"]
+            },
+            {
+                title: "Tints",
+                tokens: [
+                    "--uni-blue80", "--uni-blue60", "--uni-blue40", "--uni-blue20", "--uni-blue10",
+                    "--rust80", "--rust60", "--rust40", "--rust20"
+                ]
+            },
+            {
+                title: "Neutrals",
+                tokens: [
+                    "--dgrey1", "--dgrey2", "--dgrey3",
+                    "--mgrey1", "--mgrey2", "--mgrey3",
+                    "--lgrey1", "--lgrey2", "--lgrey3"
+                ]
+            },
+            {
+                title: "UI colours",
+                tokens: ["--error", "--success", "--highlight"]
+            }
+        ];
+
+        function renderSwatches() {
+            const wrap = document.getElementById("swatches");
+            wrap.innerHTML = "";
+
+            colourGroups.forEach(group => {
+                group.tokens.forEach(token => {
+                    const val = getVar(token) || "(missing)";
+                    const el = document.createElement("div");
+                    el.className = "swatch";
+
+                    /* Use a checker bg for highlights/light colours */
+                    const topStyle = `background: var(${token}, transparent);`;
+
+                    el.innerHTML = `
+            <span class="swatchTop" style="${topStyle}"></span>
+            <div class="swatchBody">
+              <div class="swatchName">${group.title}</div>
+              <div class="swatchVar mono">${token}</div>
+              <div class="swatchHex mono">${val}</div>
+              <div class="contrastNote">Rendered as <code>background: var(${token})</code></div>
+            </div>
+          `;
+                    wrap.appendChild(el);
+                });
+            });
+        }
+
+        function init() {
+            renderSpacing();
+            renderBreakpoints();
+            renderGridTokens();
+            renderSwatches();
+            setHeaderInfo();
+        }
+
+        window.addEventListener("resize", setHeaderInfo);
+        init();
+
+        /* allow harness to read metrics during a resize demo */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            breakpoint: document.getElementById("bp").textContent,
+            grid: document.getElementById("gridInfo").textContent
+        });
+    </script>
+</body>
+
+</html>
