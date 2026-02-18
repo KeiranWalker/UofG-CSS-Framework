@@ -218,20 +218,20 @@
 
     <h2> Display Utilities </h2>
 
-    <h3><code> .u-d-block </code> vs <code> .u-d-inline </code> vs <code> .u-d-inline-block </code></h3>
+    <h3><code> .d-block </code> vs <code> .d-inline </code> vs <code> .d-inline-block </code></h3>
 
     <div class="demo">
 
-        <span class="block u-d-inline"> inline </span>
-        <span class="block u-d-inline"> inline </span>
-        <span class="block u-d-inline-block" style="width:120px;"> inline-block </span>
-        <span class="block u-d-block"> block (takes full row) </span>
+        <span class="block d-inline"> inline </span>
+        <span class="block d-inline"> inline </span>
+        <span class="block d-inline-block" style="width:120px;"> inline-block </span>
+        <span class="block d-block"> block (takes full row) </span>
 
     </div>
 
-    <h3><code> .u-d-flex </code></h3>
+    <h3><code> .d-flex </code></h3>
 
-    <div class="demo u-d-flex items" style="gap:10px;">
+    <div class="demo d-flex items" style="gap:10px;">
 
         <div> Flex 1 </div>
         <div> Flex 2 </div>
@@ -239,9 +239,9 @@
 
     </div>
 
-    <h3><code> .u-d-grid </code></h3>
+    <h3><code> .d-grid </code></h3>
 
-    <div class="demo u-d-grid items" style="grid-template-columns: repeat(3, 1fr); gap:10px;">
+    <div class="demo d-grid items" style="grid-template-columns: repeat(3, 1fr); gap:10px;">
 
         <div> Grid 1 </div>
         <div> Grid 2 </div>
@@ -252,14 +252,14 @@
 
     </div>
 
-    <h3><code> .u-d-none </code> / <code> .u-hidden </code></h3>
+    <h3><code> .d-none </code> / <code> .hidden </code></h3>
 
     <div class="demo">
 
         <div class="block"> Visible block </div>
 
-        <div class="block u-d-none"> Should NOT appear (.u-d-none) </div>
-        <div class="block u-hidden"> Should NOT appear (.u-hidden) </div>
+        <div class="block d-none"> Should NOT appear (.d-none) </div>
+        <div class="block hidden"> Should NOT appear (.hidden) </div>
 
     </div>
 
@@ -267,50 +267,50 @@
 
     <h2> Position Utilities </h2>
 
-    <h3><code> .u-position-relative </code> + absolute child </h3>
+    <h3><code> .position-relative </code> + absolute child </h3>
 
-    <div class="pos-wrap u-position-relative">
+    <div class="pos-wrap position-relative">
 
-        <div class="pos-elem u-position-absolute u-top-2 u-left-2">
+        <div class="pos-elem position-absolute top-2 left-2">
 
-            <div class="tag"><code> .u-position-absolute .u-top-2 .u-left-2 </code></div>
+            <div class="tag"><code> .position-absolute .top-2 .left-2 </code></div>
 
         </div>
     </div>
 
-    <h3><code> .u-position-absolute </code> + right/bottom offsets </h3>
+    <h3><code> .position-absolute </code> + right/bottom offsets </h3>
 
-    <div class="pos-wrap u-position-relative">
+    <div class="pos-wrap position-relative">
 
-        <div class="pos-elem u-position-absolute u-bottom-3 u-right-3">
+        <div class="pos-elem position-absolute bottom-3 right-3">
 
-            <div class="tag"><code> .u-bottom-3 .u-right-3 </code></div>
+            <div class="tag"><code> .bottom-3 .right-3 </code></div>
 
         </div>
 
     </div>
 
-    <h3><code> .u-position-fixed </code></h3>
+    <h3><code> .position-fixed </code></h3>
 
     <p> This box should stick to the bottom-right of the page. </p>
 
-    <div class="pos-elem u-position-fixed u-bottom-2 u-right-2" style="width: 200px;">
+    <div class="pos-elem position-fixed bottom-2 right-2" style="width: 200px;">
 
         <strong> Fixed </strong><br />
 
-        <span class="tag"><code> .u-position-fixed .u-bottom-2 .u-right-2 </code></span>
+        <span class="tag"><code> .position-fixed .bottom-2 .right-2 </code></span>
 
     </div>
 
-    <h3><code> .u-position-sticky </code></h3>
+    <h3><code> .position-sticky </code></h3>
 
     <p> Scroll inside the panel. The header should stick at the top. </p>
 
     <div class="sticky-demo">
 
-        <div class="sticky-header u-position-sticky u-top-0">
+        <div class="sticky-header position-sticky top-0">
 
-            Sticky header (<code> .u-position-sticky .u-top-0 </code>)
+            Sticky header (<code> .position-sticky .top-0 </code>)
 
         </div>
         

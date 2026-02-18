@@ -1,14 +1,14 @@
 /* Visibility */
-.u-visible {
+.visible {
     visibility: visible;
   }
   
-  .u-invisible {
+  .invisible {
     visibility: hidden;
   }
   
   /* Screen-reader */
-  .u-sr-only {
+  .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -29,31 +29,31 @@ $overflow-values: (
   );
   
   @each $name, $value in $overflow-values {
-    .u-overflow-#{$name} {
+    .overflow-#{$name} {
       overflow: $value;
     }
   
-    .u-overflow-x-#{$name} {
+    .overflow-x-#{$name} {
       overflow-x: $value;
     }
   
-    .u-overflow-y-#{$name} {
+    .overflow-y-#{$name} {
       overflow-y: $value;
     }
   }
   
 /* Scroll Behavior */
-.u-scroll-auto {
+.scroll-auto {
     scroll-behavior: auto;
   }
   
-  .u-scroll-smooth {
+  .scroll-smooth {
     scroll-behavior: smooth;
   }
   
   /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    .u-scroll-smooth {
+    .scroll-smooth {
       scroll-behavior: auto;
     }
 }

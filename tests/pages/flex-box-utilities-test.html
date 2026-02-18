@@ -98,19 +98,9 @@
     <h2> display:flex + direction </h2>
 
 
-    <h3><code> .u-flex .u-flex-row </code></h3>
+    <h3><code> .flex .flex-row </code></h3>
 
-    <div class="demo u-flex u-flex-row">
-
-        <div class="item"> 1 </div>
-        <div class="item"> 2 </div>
-        <div class="item"> 3 </div>
-
-    </div>
-
-    <h3><code> .u-flex .u-flex-row-reverse </code></h3>
-
-    <div class="demo u-flex u-flex-row-reverse">
+    <div class="demo flex flex-row">
 
         <div class="item"> 1 </div>
         <div class="item"> 2 </div>
@@ -118,9 +108,9 @@
 
     </div>
 
-    <h3><code> .u-flex .u-flex-column </code></h3>
+    <h3><code> .flex .flex-row-reverse </code></h3>
 
-    <div class="demo u-flex u-flex-column">
+    <div class="demo flex flex-row-reverse">
 
         <div class="item"> 1 </div>
         <div class="item"> 2 </div>
@@ -128,9 +118,19 @@
 
     </div>
 
-    <h3><code> .u-flex .u-flex-column-reverse </code></h3>
+    <h3><code> .flex .flex-column </code></h3>
 
-    <div class="demo u-flex u-flex-column-reverse">
+    <div class="demo flex flex-column">
+
+        <div class="item"> 1 </div>
+        <div class="item"> 2 </div>
+        <div class="item"> 3 </div>
+
+    </div>
+
+    <h3><code> .flex .flex-column-reverse </code></h3>
+
+    <div class="demo flex flex-column-reverse">
 
         <div class="item"> 1 </div>
         <div class="item"> 2 </div>
@@ -142,9 +142,9 @@
 
     <h2> justify-content </h2>
 
-    <h3><code> .u-justify-start </code></h3>
+    <h3><code> .justify-start </code></h3>
     
-    <div class="demo u-flex u-justify-start u-items-center">
+    <div class="demo flex justify-start items-center">
 
         <div class="item"> A </div>
         <div class="item"> B </div>
@@ -152,19 +152,9 @@
 
     </div>
 
-    <h3><code> .u-justify-center </code></h3>
+    <h3><code> .justify-center </code></h3>
 
-    <div class="demo u-flex u-justify-center u-items-center">
-
-        <div class="item"> A </div>
-        <div class="item"> B </div>
-        <div class="item"> C </div>
-
-    </div>
-
-    <h3><code> .u-justify-end </code></h3>
-
-    <div class="demo u-flex u-justify-end u-items-center">
+    <div class="demo flex justify-center items-center">
 
         <div class="item"> A </div>
         <div class="item"> B </div>
@@ -172,19 +162,9 @@
 
     </div>
 
-    <h3><code> .u-justify-between </code></h3>
+    <h3><code> .justify-end </code></h3>
 
-    <div class="demo u-flex u-justify-between u-items-center">
-
-        <div class="item"> A </div>
-        <div class="item"> B </div>
-        <div class="item"> C </div>
-
-    </div>
-
-    <h3><code> .u-justify-around </code></h3>
-
-    <div class="demo u-flex u-justify-around u-items-center">
+    <div class="demo flex justify-end items-center">
 
         <div class="item"> A </div>
         <div class="item"> B </div>
@@ -192,9 +172,29 @@
 
     </div>
 
-    <h3><code> .u-justify-evenly </code></h3>
+    <h3><code> .justify-between </code></h3>
 
-    <div class="demo u-flex u-justify-evenly u-items-center">
+    <div class="demo flex justify-between items-center">
+
+        <div class="item"> A </div>
+        <div class="item"> B </div>
+        <div class="item"> C </div>
+
+    </div>
+
+    <h3><code> .justify-around </code></h3>
+
+    <div class="demo flex justify-around items-center">
+
+        <div class="item"> A </div>
+        <div class="item"> B </div>
+        <div class="item"> C </div>
+
+    </div>
+
+    <h3><code> .justify-evenly </code></h3>
+
+    <div class="demo flex justify-evenly items-center">
 
         <div class="item"> A </div>
         <div class="item"> B </div>
@@ -206,9 +206,9 @@
 
     <h2> align-items </h2>
 
-    <h3><code> .u-items-start </code></h3>
+    <h3><code> .items-start </code></h3>
     
-    <div class="demo u-flex u-justify-between u-items-start">
+    <div class="demo flex justify-between items-start">
 
         <div class="item"> 1 </div>
         <div class="item tall"> 2 </div>
@@ -216,19 +216,9 @@
 
     </div>
 
-    <h3><code> .u-items-center </code></h3>
+    <h3><code> .items-center </code></h3>
 
-    <div class="demo u-flex u-justify-between u-items-center">
-
-        <div class="item"> 1 </div>
-        <div class="item tall"> 2 </div>
-        <div class="item"> 3 </div>
-
-    </div>
-
-    <h3><code> .u-items-end </code></h3>
-
-    <div class="demo u-flex u-justify-between u-items-end">
+    <div class="demo flex justify-between items-center">
 
         <div class="item"> 1 </div>
         <div class="item tall"> 2 </div>
@@ -236,9 +226,19 @@
 
     </div>
 
-    <h3><code> .u-items-stretch </code></h3>
+    <h3><code> .items-end </code></h3>
 
-    <div class="demo u-flex u-justify-between u-items-stretch">
+    <div class="demo flex justify-between items-end">
+
+        <div class="item"> 1 </div>
+        <div class="item tall"> 2 </div>
+        <div class="item"> 3 </div>
+
+    </div>
+
+    <h3><code> .items-stretch </code></h3>
+
+    <div class="demo flex justify-between items-stretch">
 
         <div class="item"> 1 </div>
         <div class="item"> 2 </div>
@@ -250,13 +250,13 @@
 
     <h2> align-self </h2>
 
-    <p> One item overrides the parent’s align-items using <code> .u-self-* </code> . </p>
+    <p> One item overrides the parent’s align-items using <code> .self-* </code> . </p>
     
-    <div class="demo u-flex u-justify-between u-items-center">
+    <div class="demo flex justify-between items-center">
         
         <div class="item"> A </div>
-        <div class="item tall u-self-start"> B (self-start) </div>
-        <div class="item u-self-end"> C (self-end) </div>
+        <div class="item tall self-start"> B (self-start) </div>
+        <div class="item self-end"> C (self-end) </div>
 
     </div>
 
@@ -264,9 +264,9 @@
 
     <h2> flex-wrap </h2>
 
-    <h3><code> .u-flex-wrap </code></h3>
+    <h3><code> .flex-wrap </code></h3>
 
-    <div class="demo wrap-demo u-flex u-flex-wrap u-justify-start u-items-start">
+    <div class="demo wrap-demo flex flex-wrap justify-start items-start">
 
         <div class="item wide"> Item 1 </div>
         <div class="item wide"> Item 2 </div>
@@ -276,9 +276,9 @@
 
     </div>
 
-    <h3><code> .u-flex-nowrap </code></h3>
+    <h3><code> .flex-nowrap </code></h3>
 
-    <div class="demo wrap-demo u-flex u-flex-nowrap u-justify-start u-items-start" style="overflow:auto;">
+    <div class="demo wrap-demo flex flex-nowrap justify-start items-start" style="overflow:auto;">
 
         <div class="item wide"> Item 1 </div>
         <div class="item wide"> Item 2 </div>
@@ -294,21 +294,21 @@
 
     <p> Resize your browser to see shrink behaviour. </p>
 
-    <h3><code> .u-grow-1 </code> vs <code> .u-grow-3 </code></h3>
+    <h3><code> .grow-1 </code> vs <code> .grow-3 </code></h3>
 
-    <div class="demo u-flex u-justify-start u-items-stretch">
+    <div class="demo flex justify-start items-stretch">
 
-        <div class="item u-grow-1"> grow 1 </div>
-        <div class="item u-grow-3"> grow 3 </div>
-        <div class="item u-grow-1"> grow 1 </div>
+        <div class="item grow-1"> grow 1 </div>
+        <div class="item grow-3"> grow 3 </div>
+        <div class="item grow-1"> grow 1 </div>
 
     </div>
 
-    <h3><code> .u-shrink-0 </code> (won’t shrink) </h3>
+    <h3><code> .shrink-0 </code> (won’t shrink) </h3>
 
-    <div class="demo u-flex u-justify-start u-items-center" style="width: 320px; overflow:auto;">
+    <div class="demo flex justify-start items-center" style="width: 320px; overflow:auto;">
 
-        <div class="item wide u-shrink-0"> shrink 0 </div>
+        <div class="item wide shrink-0"> shrink 0 </div>
         <div class="item wide"> normal shrink </div>
         <div class="item wide"> normal shrink </div>
 
@@ -320,7 +320,7 @@
 
     <p> These should only take as much width as needed. </p>
 
-    <div class="u-inline-flex u-justify-center u-items-center" style="border:2px solid #333; padding: 10px; gap: 10px;">
+    <div class="inline-flex justify-center items-center" style="border:2px solid #333; padding: 10px; gap: 10px;">
 
         <div class="item"> Inline </div>
         <div class="item"> Flex </div>
