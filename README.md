@@ -49,6 +49,14 @@ If scss fails to compile correctly run
 
     - npx sass src/reset/reset.scss distribution/reset.css
 
+
+## StyleLint tests
+
+1. In the project root folder, open cmd
+2. Type and install - npm install -D stylelint stylelint-config-standard-scss stylelint-scss postcss-scss
+3. Run npm run lint:scss
+
+
 ## Visuals
 Screenshots TBD
 
