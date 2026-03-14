@@ -160,27 +160,7 @@
         </section>
     </div>
 
-    <!-- Test harness JS only (not part of component) -->
-    <script>
-        const tabs = document.querySelectorAll(".tabs__tab");
-        const panels = document.querySelectorAll(".tabs__panel");
-
-        tabs.forEach((tab) => {
-            tab.addEventListener("click", () => {
-                tabs.forEach(t => {
-                    t.classList.remove("tabs__tab--active");
-                    t.setAttribute("aria-selected", "false");
-                });
-                panels.forEach(p => p.classList.remove("is-active"));
-
-                tab.classList.add("tabs__tab--active");
-                tab.setAttribute("aria-selected", "true");
-
-                const panel = document.getElementById(tab.getAttribute("aria-controls"));
-                panel.classList.add("is-active");
-            });
-        });
-    </script>
+    <script src="../../distribution/framework.js"></script>
 </body>
 
 </html>
