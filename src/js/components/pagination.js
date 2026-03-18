@@ -1,184 +1,184 @@
-/*
- * Pagination functionality
- * Handles click events on pagination links and navigates between pages
- * Manages visibility of Previous/Next buttons and shows ellipsis for skipped pages
- */
-
 document.addEventListener('DOMContentLoaded', function () {
-    const paginationContainer = document.querySelector('.pagination');
-    
-    if (!paginationContainer) {
-        console.warn('Pagination container not found');
-        return;
-    }
+    document.querySelectorAll('.pagination').forEach(paginationContainer => {
+        // const paginationContainer = document.querySelector('.pagination');
 
-    const paginationLinks = paginationContainer.querySelectorAll('a');
-    const prevLink = document.getElementById('prev-link');
-    const nextLink = document.getElementById('next-link');
-    
-    const pageLinks = Array.from(paginationLinks).filter(link => {
-        const text = link.textContent.trim();
-        return text !== 'Previous' && text !== 'Next';
-    });
-
-    const totalPages = pageLinks.length;
-
-    /* Gets the current active page number and returns current page number */
-    function getActivePage() {
-        const activeLink = paginationContainer.querySelector('a.active');
-        if (!activeLink) {
-            return 1;
-        }
-        // Prefer a stored pageNum, fall back to text content
-        const value = activeLink.dataset.pageNum || activeLink.textContent.trim();
-        const num = parseInt(value, 10);
-        return isNaN(num) ? 1 : num;
-    }
-
-    /* Navigates to the specified page in pageNum */
-    function navigateToPage(pageNum) {
-        if (pageNum >= 1 && pageNum <= totalPages) {
-            let fileName;
-            if (pageNum === 1) {
-                fileName = 'index.html';
-            } else {
-                fileName = `page${pageNum}.html`;
-            }
-            window.location.href = fileName;
-        }
-    }
-
-    /* Updates button visibility based on current page */
-    function updateButtonVisibility() {
-        const currentPage = getActivePage();
-        
-        // Hide Previous button on first page
-        if (prevLink) {
-            prevLink.parentElement.style.display = currentPage === 1 ? 'none' : 'li';
-        }
-        
-        // Hide Next button on last page
-        if (nextLink) {
-            nextLink.parentElement.style.display = currentPage === totalPages ? 'none' : 'li';
-        }
-    }
-
-    /* Updates page visibility with ellipsis for large page counts - 6 pages at a time shown */
-    function updatePageVisibility() {
-        const currentPage = getActivePage();
-        const pagesPerGroup = 6;
-        
-        // If 6 or fewer pages, show all
-        if (totalPages <= pagesPerGroup) {
-            pageLinks.forEach((link, index) => {
-                link.parentElement.style.display = 'li';
-                link.textContent = index + 1;
-                link.style.cursor = 'pointer';
-                link.style.pointerEvents = 'auto';
-                link.style.opacity = '';
-                link.dataset.pageNum = index + 1;
-            });
+        if (!paginationContainer) {
+            console.warn('Pagination container not found');
             return;
         }
 
-        /* calculates which group the current page belongs to */
-        const currentGroup = Math.floor((currentPage - 1) / pagesPerGroup);
-        const groupStart = currentGroup * pagesPerGroup + 1;
-        const groupEnd = Math.min(groupStart + pagesPerGroup - 1, totalPages);
+        const paginationLinks = paginationContainer.querySelectorAll('a');
+        const prevLink = paginationContainer.querySelector('#prev-link');
+        const nextLink = paginationContainer.querySelector('#next-link');
 
-        /* Build list of visible items */
-        const visibleItems = [];
-        
-        /* Add the pages in the current group */
-        for (let i = groupStart; i <= groupEnd; i++) {
-            visibleItems.push(i);
-        }
-        
-        /* Add ellipsis after if group doesn't end at last page */
-        if (groupEnd < totalPages) {
-            visibleItems.push('...');
-        }
+        const pageLinks = Array.from(paginationLinks).filter(link => {
+            const text = link.textContent.trim();
+            return text !== 'Previous' && text !== 'Next';
+        });
 
-        /* Assign visible items to page link elements */
+        const totalPages = pageLinks.length;
+
+        /* Store each link's real page number once so it is never lost */
         pageLinks.forEach((link, index) => {
-            if (index < visibleItems.length) {
-                const item = visibleItems[index];
-                link.parentElement.style.display = 'li';
-                link.textContent = item;
-                link.dataset.pageNum = item;
-                
-                if (item === '...') {
-                    link.style.cursor = 'default';
-                    link.style.pointerEvents = 'none';
-                    link.style.opacity = '0.7';
-                } else {
+            link.dataset.targetPage = String(index + 1);
+        });
+
+        /* Get current page by matching the current URL against the page links */
+        function getCurrentPageFromUrl() {
+            const currentPath = window.location.pathname.split('/').pop();
+
+            const matchedLink = pageLinks.find(link => {
+                const linkPath = new URL(link.href, window.location.href).pathname.split('/').pop();
+                return linkPath === currentPath;
+            });
+
+            if (!matchedLink) {
+                return 1;
+            }
+
+            const num = parseInt(matchedLink.dataset.targetPage, 10);
+            return isNaN(num) ? 1 : num;
+        }
+
+        /* Navigates to the specified page */
+        function navigateToPage(pageNum) {
+            const targetLink = pageLinks.find(link => {
+                return parseInt(link.dataset.targetPage, 10) === pageNum;
+            });
+
+            if (targetLink && targetLink.href) {
+                window.location.href = targetLink.href;
+            }
+        }
+
+        /* Updates button visibility based on current page */
+        function updateButtonVisibility(currentPage) {
+            if (prevLink) {
+                prevLink.parentElement.style.display = currentPage === 1 ? 'none' : '';
+            }
+
+            if (nextLink) {
+                nextLink.parentElement.style.display = currentPage === totalPages ? 'none' : '';
+            }
+        }
+
+        /* Updates page visibility with ellipsis for large page counts */
+        function updatePageVisibility(currentPage) {
+            const pagesPerGroup = 6;
+
+            if (totalPages <= pagesPerGroup) {
+                pageLinks.forEach((link, index) => {
+                    link.parentElement.style.display = '';
+                    link.textContent = String(index + 1);
+                    link.dataset.pageNum = String(index + 1);
                     link.style.cursor = 'pointer';
                     link.style.pointerEvents = 'auto';
                     link.style.opacity = '';
-                }
-            } else {
-                link.parentElement.style.display = 'none';
-            }
-        });
-        
-        /* ensure correct active class remains visible */
-        pageLinks.forEach(link => link.classList.remove('active'));
-        const activeLink = pageLinks.find(l => parseInt(l.dataset.pageNum) === currentPage);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
-    } 
+                    link.classList.remove('active');
 
-    updateButtonVisibility(); /* used to intiialise the visibility */
-    updatePageVisibility();
-
-    /* Add click event listeners to all pagination links */
-    paginationLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const linkText = this.textContent.trim();
-            
-            // Skip ellipsis clicks
-            if (linkText === '...') {
+                    if (index + 1 === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
                 return;
             }
 
-            let targetPageNum = null;
+            const currentGroup = Math.floor((currentPage - 1) / pagesPerGroup);
+            const groupStart = currentGroup * pagesPerGroup + 1;
+            const groupEnd = Math.min(groupStart + pagesPerGroup - 1, totalPages);
 
-            if (linkText === 'Previous') {
-                const currentPage = getActivePage();
-                targetPageNum = currentPage - 1;
-            } else if (linkText === 'Next') {
-                const currentPage = getActivePage();
-                targetPageNum = currentPage + 1;
-            } else {
-                /* Use data attribute or parse text */
-                targetPageNum = parseInt(this.dataset.pageNum || linkText);
+            const visibleItems = [];
+
+            visibleItems.push(1);
+
+            if (groupStart > 2) {
+                visibleItems.push('...')
             }
 
-            /* Navigate to the page if valid */
-            if (targetPageNum && targetPageNum >= 1 && targetPageNum <= totalPages) {
-                navigateToPage(targetPageNum);
+            for (let i = groupStart; i <= groupEnd; i++) {
+                if (i !== 1 && i <= totalPages) {
+                    visibleItems.push(i);
+                }
+                
             }
-        });
-    });
 
-    /* Public API for programmatic pagination */
-    window.pagination = {
-        /* Navigate to a specific page designated by pageNum */
-        goToPage: function (pageNum) {
-            navigateToPage(pageNum);
-        },
+            if (groupEnd < totalPages) {
+                visibleItems.push('...');
+            }
 
-        /* Get the current active page number, returns it */
-        getCurrentPage: function () {
-            return getActivePage();
-        },
+            pageLinks.forEach((link, index) => {
+                link.classList.remove('active');
 
-        /* Get the total number of pages and returns it */
-        getTotalPages: function () {
-            return totalPages;
+                if (index < visibleItems.length) {
+                    const item = visibleItems[index];
+                    link.parentElement.style.display = '';
+                    link.textContent = String(item);
+                    link.dataset.pageNum = String(item);
+
+                    if (item === '...') {
+                        link.style.cursor = 'default';
+                        link.style.pointerEvents = 'none';
+                        link.style.opacity = '0.7';
+                    } else {
+                        link.style.cursor = 'pointer';
+                        link.style.pointerEvents = 'auto';
+                        link.style.opacity = '';
+
+                        if (item === currentPage) {
+                            link.classList.add('active');
+                        }
+                    }
+                } else {
+                    link.parentElement.style.display = 'none';
+                }
+            });
         }
-    };
+
+        const currentPage = getCurrentPageFromUrl();
+        updatePageVisibility(currentPage);
+        updateButtonVisibility(currentPage);
+
+        /* Add click event listeners to all pagination links */
+        paginationLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const linkText = this.textContent.trim();
+
+                if (linkText === '...') {
+                    return;
+                }
+
+                let targetPageNum = null;
+                const currentPage = getCurrentPageFromUrl();
+
+                if (linkText === 'Previous') {
+                    targetPageNum = currentPage - 1;
+                } else if (linkText === 'Next') {
+                    targetPageNum = currentPage + 1;
+                } else {
+                    targetPageNum = parseInt(this.dataset.pageNum || linkText, 10);
+                }
+
+                if (targetPageNum && targetPageNum >= 1 && targetPageNum <= totalPages) {
+                    navigateToPage(targetPageNum);
+                }
+            });
+        });
+
+        /* Public API for programmatic pagination */
+        window.pagination = {
+            goToPage: function (pageNum) {
+                navigateToPage(pageNum);
+            },
+
+            getCurrentPage: function () {
+                return getCurrentPageFromUrl();
+            },
+
+            getTotalPages: function () {
+                return totalPages;
+            }
+        };
+    });
 });
