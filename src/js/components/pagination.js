@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.pagination').forEach(paginationContainer => {
-        // const paginationContainer = document.querySelector('.pagination');
 
         if (!paginationContainer) {
             console.warn('Pagination container not found');
