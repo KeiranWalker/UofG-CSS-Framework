@@ -89,7 +89,7 @@
 /* Text Size */
 @each $key, $size in $font-sizes {
     .fs-#{$key} {
-        font-size: $size;
+        --fsize: #{$size};
     }
 }
 
@@ -98,7 +98,7 @@
     @media (width >= $width) {
         @each $key, $size in $font-sizes {
             .fs-#{$bp}-#{$key} {
-                font-size: $size;
+                --fsize: #{$size};
             }
         }
     }
