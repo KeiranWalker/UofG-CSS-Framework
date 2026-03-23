@@ -1,0 +1,279 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Grid Utilities Test </title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+            padding: 20px;
+
+        }
+
+        .demo {
+
+            border: 2px dashed #999;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fafafa;
+            margin-top: 14px;
+
+        }
+
+        .box {
+
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+            margin: 12px;
+
+        }
+
+        .tall-container {
+
+            border: 2px solid #ccc;
+            padding: 12px;
+            border-radius: 12px;
+            background: #fff;
+            height: 200px;
+
+            /* fixed height container for height tests */
+
+            margin-top: 14px;
+            position: relative;
+
+        }
+
+        .label {
+
+            font-weight: bold;
+            margin-top: 20px;
+
+        }
+
+        code {
+
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h1> Grid Utility Test </h1>
+    <h2>Container Tests</h2>
+
+    <p>This should apply horizontal padding and act as the 'container' for row elements.</p>
+    <div class="container demo">
+        Hello, World!
+    </div>
+
+    <h2>Row and Sized Container Tests</h2>
+    <p>Rows should be able to be stacked upon each other, and can contain columns.  Rows default to the left of its container</p>
+    <p>These also show different column elements spanning different proportions of the 12 grid system</p>
+
+    <div class="container demo">
+        <div class="row">
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+            <div class="col-1">
+                <div class="box">1</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="box">4</div>
+            </div>
+            <div class="col-4">
+                <div class="box">4</div>
+            </div>
+            <div class="col-4">
+                <div class="box">4</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="box">6</div>
+            </div>
+            <div class="col-6">
+                <div class="box">6</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Column Tests</h2>
+    <p>These columns should auto adjust based on how many elements are within the row to fill the container width</p>
+
+    <div class="container demo">
+        <div class="row">
+            <div class="col">
+                <div class="box">I'll adjust to 2 elements...</div>
+            </div>
+            <div class="col">
+                <div class="box">I'll adjust to 2 elements...</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="box">and I'll adjust to 4!</div>
+            </div>
+            <div class="col">
+                <div class="box">and I'll adjust to 4!</div>
+            </div>
+            <div class="col">
+                <div class="box">and I'll adjust to 4!</div>
+            </div>
+            <div class="col">
+                <div class="box">and I'll adjust to 4!</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Offset Tests</h2>
+    <p>These are used to offset elements from the left towards the right</p>
+
+    <div class="container demo">
+        <div class="row">
+            <div class="col-11 offset-1">
+                <div class="box">
+                    Offset by a twelfth
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 offset-6">
+                <div class="box">
+                    Offset by half
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 offset-9">
+                <div class="box">
+                    Offset by two thirds
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Order Classes</h2>
+    <p>These are used to reorder the elements in a row.  These are structured in an increasing order but will appear in a decreasing order</p>
+
+    <div class="container demo">
+        <div class="row">
+            <div class="col order-12">
+                <div class="box">
+                    1
+                </div>
+            </div>
+            <div class="col order-11">
+                <div class="box">
+                    2
+                </div>
+            </div>
+            <div class="col order-10">
+                <div class="box">
+                    3
+                </div>
+            </div>
+            <div class="col order-9">
+                <div class="box">
+                    4
+                </div>
+            </div>
+            <div class="col order-8">
+                <div class="box">
+                    5
+                </div>
+            </div>
+            <div class="col order-7">
+                <div class="box">
+                    6
+                </div>
+            </div>
+            <div class="col order-6">
+                <div class="box">
+                    7
+                </div>
+            </div>
+            <div class="col order-5">
+                <div class="box">
+                    8
+                </div>
+            </div>
+            <div class="col order-4">
+                <div class="box">
+                    9
+                </div>
+            </div>
+            <div class="col order-3">
+                <div class="box">
+                    10
+                </div>
+            </div>
+            <div class="col order-2">
+                <div class="box">
+                    11
+                </div>
+            </div>
+            <div class="col order-1">
+                <div class="box">
+                    12
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+
+
+</html>
