@@ -7,7 +7,11 @@
     "stylelint-scss": "^7.0.0"
   },
   "scripts": {
-    "lint:scss": "stylelint \"src/**/*.scss\" \"components/**/*.scss\"",
-    "build:js": "esbuild src/js/framework.js --bundle --outfile=distribution/framework.js"
+    "lint:scss": "stylelint \"src/**/*.scss\"",
+    "build:js": "esbuild src/js/framework.js --bundle --outfile=distribution/framework.js",
+    "build:css": "sass ./src/main.scss ./distribution/main.css"  
+  },
+  "dependencies": {
+    "sass": "^1.98.0"
   }
 }
