@@ -1,1 +1,0 @@
-As UofG developer I want to be able to download the UofG CSS framework using npm from the command line, and link it via the <link> elements, such that I can easily style the UofG wesbites.
