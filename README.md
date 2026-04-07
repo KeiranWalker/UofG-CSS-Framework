@@ -6,6 +6,7 @@ This project provides users with a framework for designing websites in accordanc
 This makes designing consistent webpages easy - using our framework means all your design components will be laid out and styled correctly.
 
 The Design Guide website can be found here: [this link](https://design.gla.ac.uk/822fb39f4/p/72d586-university-of-glasgow-design-system)
+
 The Framework Documentation can be found here: [this link](https://github.com/user-attachments/files/26536162/UofG-CSS-Framework-Documentation.pdf)
 
 
